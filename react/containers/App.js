@@ -12,20 +12,22 @@ class App extends Component{
 		this.clickRed = this.clickRed.bind(this)
 	}
 
-	clickBlue() {
+	clickBlue(e) {
+		e.preventDefault()
 		this.setState({color: '#0000FF'})
 	}
 
-	clickRed() {
+	clickRed(e) {
+		e.preventDefault()
 		this.setState({color: '#FF0000'})	
 	}
 
   render(){
     return (
       <div>
-        <STLViewer url="dist/static/crazy-thing.stl" modelColor={this.state.color} />
-        <button onClick={this.clickRed} >red</button>
-        <button onClick={this.clickBlue} >blue</button>
+        <STLViewer url="dist/static/crazy-thing.stl" modelColor={this.state.color}/>
+        <button onClick={this.clickRed}>red</button>
+        <button onClick={this.clickBlue}>blue</button>
       </div>
     );
   }
