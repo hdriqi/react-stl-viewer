@@ -99,6 +99,9 @@ var STLViewer = function (_Component) {
 					xDims = geometry.boundingBox.max.x - geometry.boundingBox.min.x;
 					yDims = geometry.boundingBox.max.y - geometry.boundingBox.min.y;
 					zDims = geometry.boundingBox.max.z - geometry.boundingBox.min.z;
+					if (component.props.boundingBox) {
+						component.props.boundingBox(xDims, yDims, zDims);
+					}
 					if (rotate) {
 						mesh.rotation.x = 5;
 						mesh.rotation.z = .25;
@@ -236,6 +239,9 @@ var STLViewer = function (_Component) {
 					xDims = geometry.boundingBox.max.x - geometry.boundingBox.min.x;
 					yDims = geometry.boundingBox.max.y - geometry.boundingBox.min.y;
 					zDims = geometry.boundingBox.max.z - geometry.boundingBox.min.z;
+					if (component.props.boundingBox) {
+						component.props.boundingBox(xDims, yDims, zDims);
+					}
 					if (rotate) {
 						mesh.rotation.x = 5;
 						mesh.rotation.z = .25;
@@ -255,6 +261,7 @@ var STLViewer = function (_Component) {
 					// Add controls for mouse interaction
 					if (orbitControls) {
 						controls = new OrbitControls(camera, _reactDom2.default.findDOMNode(component));
+						controls.enableKeys = false;
 						controls.addEventListener('change', orbitRender);
 					}
 
